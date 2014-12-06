@@ -1,0 +1,31 @@
+<div class="container">
+
+		<div class="row">
+			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+
+				<!-- Site Title, your name, HELLO msg, etc. -->
+				<h1 class="title">Some more about the trip...</h1>
+				<accordion close-others="oneAtATime">
+                    <accordion-group heading="Attractions in {{attract.city.name}}" is-open="attract.isOpen" ng-repeat="attract in step2Data.attractions">
+                      <div class="btn-group">
+                        <div class="btn btn-success col-md-12" ng-scrollbar ng-change="selectedAttractions(attract.city, item)" ng-model="item.selected" btn-checkbox ng-repeat="item in attract.data.groups[0].items">
+                            <label class="col-md-5">{{ item.venue.name }}</label>
+                            <label class="col-md-3">{{ item.venue.categories[0].name }}</label>
+                            <a class="col-md-4" ng-href="{{ item.venue.tips[0].canonicalUrl }}" class="hyper">More info</a>
+                          </div>
+                    </div>
+                    </accordion-group>
+                  </accordion>
+	
+			</div> <!-- /col -->
+		</div> <!-- /row -->
+    <div class="row offset-title" ng-show="verifyEntered()">
+			<div class="col-md-10 col-lg-10 col-md-offset-4 col-lg-offset-4 text-center">	
+
+				<button class="btn start-button col-lg-3 col-md-3" type="button" ng-click="nextStep()">
+                     Next
+                  </button>
+				
+      </div><!-- /.row -->
+</div>
+</div>

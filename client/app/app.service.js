@@ -35,5 +35,13 @@ angular.module('thackApp')
         allData.budget = value.budget;
     };
     
+    this.getSelectedAttractions = function() {
+        return allData.attractions;
+    };
+    
+    this.setSelectedAttractions = function(value) {
+        allData.attractions = value;
+    };
+    
     
 }]);
