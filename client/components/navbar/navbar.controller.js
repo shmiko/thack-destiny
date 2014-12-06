@@ -3,8 +3,11 @@
 angular.module('thackApp')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
-      'title': 'Home',
-      'link': '/home'
+      'title': 'about us',
+      'link': '/'
+    },{
+      'title': 'contact',
+      'link': '/'
     }];
 
     $scope.isCollapsed = true;

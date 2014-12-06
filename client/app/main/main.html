@@ -1,26 +1,34 @@
 
-<section class="section" id="head">
 	<div class="container">
 
 		<div class="row">
 			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
 
 				<!-- Site Title, your name, HELLO msg, etc. -->
-				<h1 class="title">Magister</h1>
-				<h2 class="subtitle">Free html5 template by GetTemplate</h2>
+				<h1 class="title">Planned for a vacation? Booked your travel tickets to the destination of your choice, but could not figure out what do do or where to go once you reach there. Do not know if public transport is available or you have to take a cab once you reach there? Do not know what are the best places to visit in that region? Do not know where to book your accomodation that is centrally located to the places of your interest and transport? You have come to the right place!!! </h1>
+				<div class="subtitle">Destiny uses state of the art api's provided by multiple leading innovators in travel industry to provide you with the much needed information for travellers at a single place. Finding the information you need is as simple as 1, 2, 3...</div>
 
 				<!-- Short introductory (optional) -->
 				<h3 class="tagline">
-					Potentially, the best place to tell people why they are here.<br>
-					So, this is a demo page built to showcase the beauty of the template.
+					
 				</h3>
 				
 				<!-- Nice place to describe your site in a sentence or two -->
-				
+				<div class="col-md-offset-3 col-lg-offset-3">
+   <div class="row">
+         <input type="text" ng-model="homeData.selectedCountry"
+typeahead="c for c in countryList | filter:$viewValue | limitTo:10"
+typeahead-min-length='1' placeholder="I'm visiting" class="visiting col-lg-6 col-md-6" ng-enter="countrySelected()">
+            
+                  <button class="btn start-button col-lg-2 col-md-2" type="button" ng-click="countrySelected()">
+                     Start!
+                  </button>
+      </div><!-- /.row -->
+</div>
 	
 			</div> <!-- /col -->
 		</div> <!-- /row -->
 	
 	</div>
-</section>
+
 

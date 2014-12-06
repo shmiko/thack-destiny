@@ -42,7 +42,7 @@ body {
 
 /* Show one of sections */
 #head { 
-	display: block;
+	display: inline;
 }
 
 
@@ -61,15 +61,15 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 .subtitle { 
 	font-family: 'Wire One', Helvetica, Arial, sans-serif;
 	font-weight:normal;
-	font-size:7em;
+	font-size:1.5em;
 	margin-bottom:15px; 
 	color:#FDF9F4; 
 	line-height:1em;
 }
 .subtitle { 
 	line-height:.9em;
-	font-size:5.5em;
-	margin-top:0;
+	font-size:1em;
+	margin-top:50px;
 	margin-bottom:40px; 
 }
 .tagline { 
@@ -258,4 +258,21 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 }
 
 
+/***********************************************************/
+/*                   Custom                        */
+/***********************************************************/
+.entry-label {
+    float: clear;
+    display: inline;
+}
 
+.start-button {
+    background-color: green;
+    height: 40px;
+    margin-left: 20px;
+}
+
+.visiting {
+    height: 40px;
+    color: grey;
+}
