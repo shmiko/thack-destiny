@@ -4,12 +4,14 @@
 			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
 
 				<!-- Site Title, your name, HELLO msg, etc. -->
-				<h1 class="title">Where do you want to visit in {{ $scope.step0Data.selectedCountry }} ?</h1>
+				<h1 class="title">Where do you want to visit in {{ step0Data.selectedCountry }} ?</h1>
 				
 				<!-- Nice place to describe your site in a sentence or two -->
 				<div class="col-md-offset-3 col-lg-offset-3">
    <div class="row">
-         <input type="text" placeholder="Select cities" class="visiting col-lg-6 col-md-6" ng-enter="citySelected()">
+         <input type="text" placeholder="Select cities" ng-model="step0Data.selectedCity"
+typeahead="c for c in step0Data.cityList | filter:$viewValue | limitTo:10"
+typeahead-min-length='1' class="visiting col-lg-6 col-md-6" ng-enter="citySelected()">
             
                   <button class="btn start-button col-lg-2 col-md-2" type="button" ng-click="citySelected()">
                      Add
@@ -19,5 +21,50 @@
 	
 			</div> <!-- /col -->
 		</div> <!-- /row -->
+    <div class="row" ng-show="step0Data.selectedCityList.length">
+			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+
+				<!-- Site Title, your name, HELLO msg, etc. -->
+				<h1 class="title offset-title">City visit details</h1>
+				
+      </div><!-- /.row -->
+</div>
 	
+			</div> <!-- /col -->
+		</div> <!-- /row -->
+    <div class="row" ng-repeat="city in step0Data.selectedCityList" offset-title>
+			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+
+				<!-- Site Title, your name, HELLO msg, etc. -->
+				<h1 class="col-md-4 title">{{ city.name }}</h1>
+				
+				<!-- Nice place to describe your site in a sentence or two -->
+				<div class="col-md-3">
+            <p class="input-group">
+              <input type="text" class="visiting" datepicker-popup="dd.MM.yyyy" ng-model="city.startDate" is-open="city.opened0" was-open="isOpened($index, 0)" min-date="minDate" max-date="'31-12-2016'" ng-required="true" date-disabled="disabled(date, mode)" close-text="Close" />
+              <span class="input-group-btn" show-button-bar="false" close-on-date-selection: true>
+                <button type="button" class="btn step0-button" ng-click="open($event, $index, 0)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+                <div class="col-md-3">
+            <p class="input-group">
+              <input type="text" class="visiting" datepicker-popup="dd.MM.yyyy" ng-model="city.endDate" is-open="city.opened1" min-date="minDate" max-date="'31-12-2016'" ng-required="true" date-disabled="disabled(date, mode)" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn step0-button" ng-click="open($event, $index, 1)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+	
+			</div> <!-- /col -->
+		</div> <!-- /row -->
+	<div class="row" ng-show="verifyEntered()" offset-title>
+			<div class="col-md-10 col-lg-10 col-md-offset-4 col-lg-offset-4 text-center">	
+
+				<button class="btn start-button col-lg-2 col-md-2" type="button" ng-click="nextStep()">
+                     Next
+                  </button>
+				
+      </div><!-- /.row -->
+</div>
 	</div>

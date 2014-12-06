@@ -17,6 +17,10 @@ angular.module('thackApp', [
         templateUrl: 'app/step0/step0.html',
         controller: 'step0Controller'
     })
+    .when('/step1', {
+        templateUrl: 'app/step1/step1.html',
+        controller: 'step1Controller'
+    })
       .otherwise({
         redirectTo: '/'
       });

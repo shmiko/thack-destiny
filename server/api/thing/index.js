@@ -2,9 +2,11 @@
 
 var express = require('express');
 var controller = require('./thing.controller');
-
+var app = express();
 var router = express.Router();
 
-router.get('/', controller.index);
-
-module.exports = router;
+app.get('/?:cmd', controller.index);
+function asdf(req, res) {
+    
+}
+module.exports = controller.index;

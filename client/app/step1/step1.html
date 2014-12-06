@@ -1,0 +1,54 @@
+<div class="container">
+
+		<div class="row">
+			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+
+				<!-- Site Title, your name, HELLO msg, etc. -->
+				<h1 class="title">Some more about the trip...</h1>
+				<h4 class="title offset-title">No of persons</h4>
+				<!-- Nice place to describe your site in a sentence or two -->
+				<div>
+                   <div class="row">
+                         <!-- Simple dropdown -->
+                    <div class="btn-group">
+                        <label class="btn btn-primary" ng-model="step1Data.noOfPersons" btn-radio="{{ p }}" ng-repeat="p in persons">{{ p }}</label>
+                    </div>
+                      </div><!-- /.row -->
+                </div>
+                
+                <h4 class="title offset-title">Trip type</h4>
+				<!-- Nice place to describe your site in a sentence or two -->
+				<div>
+                   <div class="row">
+                         <!-- Simple dropdown -->
+                    <div class="btn-group">
+                        <label class="btn btn-primary" ng-model="step1Data.tripType" btn-radio="{{ $index }}" ng-repeat="q in tripTypes">{{ q }}</label>
+                    </div>
+                      </div><!-- /.row -->
+                </div>
+                
+                
+                <h4 class="title offset-title">Budget</h4>
+				<!-- Nice place to describe your site in a sentence or two -->
+				<div>
+                   <div class="row">
+                         <!-- Simple dropdown -->
+                    <div class="btn-group">
+                        <label class="btn btn-primary" ng-model="step1Data.budget" btn-radio="{{ $index }}" ng-repeat="r in budgets">{{ r }}</label>
+                    </div>
+                      </div><!-- /.row -->
+                </div>
+	
+			</div> <!-- /col -->
+		</div> <!-- /row -->
+    <div class="row offset-title" ng-show="verifyEntered()" offset-title>
+			<div class="col-md-10 col-lg-10 col-md-offset-4 col-lg-offset-4 text-center">	
+
+				<button class="btn start-button col-lg-3 col-md-3" type="button" ng-click="nextStep()">
+                     Next
+                  </button>
+				
+      </div><!-- /.row -->
+</div>
+</div>
+	</div>
