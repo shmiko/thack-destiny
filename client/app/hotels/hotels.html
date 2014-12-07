@@ -1,0 +1,65 @@
+<div class="container">
+
+		<div class="row">
+			<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+
+				<!-- Site Title, your name, HELLO msg, etc. -->
+				<h1 class="title">Your trip!</h1>
+				<accordion close-others="oneAtATime" ng-repeat="algo in algoData">
+                    <accordion-group heading="Reach in  {{algo.nearestAirport.airport_name}} on {{ algo.checkin | date: 'dd-MM-yy' }}" is-open="algo.isOpen">
+                      <div class="btn-group">
+                        <div class="btn btn-success col-md-12" >
+                            <div class="row">
+                            <label class="col-md-12">Nearest Railway station: {{ 'N/A' }}</label>
+                                </div>
+                            <div class="row">
+                            <label class="col-md-12">Cab availability: {{ algo.airportCabPickup[0].car[0].estimated_total.amount }} USD per day</label>                 </div>
+                          </div>
+                    </div>
+                    </accordion-group>
+                    <accordion-group heading="Accomodation options in  {{algo.city}} central to your places of interest from {{ algo.checkin | date: 'dd-MM-yy' }} to {{ algo.checkout | date: 'dd-MM-yy' }}" is-open="algo.isOpen">
+                      <div class="row">
+                        <div class="btn btn-success col-md-12" btn-radio="{{ $index }}" ng-model="algo.chosenHotel" ng-click="hotelChosen(algo, $index)" ng-repeat="hotel in algo.hotels">
+                            <label class="col-md-5">{{ hotel.property_name }}</label>
+                            <label class="col-md-3">{{ hotel.total_price.amount }} USD</label>
+                            <button class="col-md-4 btn btn-primary" ng-click="showHotelFullDetails(hotel)" class="hyper">Full Info</buton>
+                          </div>
+                    </div>
+                    </accordion-group>
+                    <accordion-group heading="Travel options in  {{algo.city}} from {{ algo.checkin | date: 'dd-MM-yy' }} to {{ algo.checkout | date: 'dd-MM-yy' }}" is-open="algo.isOpen">
+                        <div class="row">
+                        <div class="btn btn-success col-md-12">
+                            <label class="col-md-6">Location</label>
+                            <label class="col-md-2">Cab</label>
+                            <label class="col-md-2">Rail</label>
+                            <label class="col-md-2">Distance</label>
+                          </div>
+                    </div>
+                      <div class="row" ng-show="algo.chosenHotel" ng-repeat="att in algo.attractions">
+                        <div class="btn btn-success col-md-12">
+                            <label class="col-md-6">{{att.venue.name}}</label>
+                            <label class="col-md-2">{{ att.cabCharge }}</label>
+                            <label class="col-md-2">{{ att.railTravel }}</label>
+                            <label class="col-md-2">{{att.distanceTo}}</label>
+                          </div>
+                    </div>
+                        <div class="row" ng-show="!algo.chosenHotel">
+                        <div class="btn btn-success col-md-12">
+                            <label class="col-md-6">Please choose a hotel to display your travel options</label>
+                          </div>
+                    </div>
+                    </accordion-group>
+                  </accordion>
+	
+			</div> <!-- /col -->
+		</div> <!-- /row -->
+    <div class="row offset-title" ng-show="verifyEntered()">
+			<div class="col-md-10 col-lg-10 col-md-offset-4 col-lg-offset-4 text-center">	
+
+				<button class="btn start-button col-lg-3 col-md-3" type="button" ng-click="nextStep()">
+                     Next
+                  </button>
+				
+      </div><!-- /.row -->
+</div>
+</div>

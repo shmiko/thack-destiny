@@ -2,7 +2,7 @@ angular.module('thackApp')
   .controller('step2Controller', ['$scope', '$http', 'allDataService','$location', function ($scope, $http, allDataService, $location) {
       $scope.step2Data = {};
       $scope.step2Data.attractions = [];
-        $scope.step2Data.selectedAttractions = [];
+        $scope.step2Data.selectedAttractions = {};
       $scope.step2Data.selectedCountry = allDataService.getSelectedCountry();
       $scope.step2Data.selectedCities = allDataService.getSelectedCities();
       if(!$scope.step2Data.selectedCountry || !$scope.step2Data.selectedCities.length) {
@@ -26,25 +26,28 @@ angular.module('thackApp')
       
       $scope.selectedAttractions = function(city, item) {
           var a = true;
-          for(var i in $scope.step2Data.selectedAttractions) {
-              if($scope.step2Data.selectedAttractions[i].data.venue.name === item.venue.name) {
+          var att = $scope.step2Data.selectedAttractions[city.name];
+          for(var i in att) {
+              if(att[i].venue.name === item.venue.name) {
                   a = false;
                   break;
               }
           }
           if(item.selected && a) {
               console.log($scope.step2Data.selectedAttractions);
-              $scope.step2Data.selectedAttractions.push({
-             city: city,
-             data: item
-             });
+              if(!$scope.step2Data.selectedAttractions[city.name]) {
+                  $scope.step2Data.selectedAttractions[city.name] = [];
+              }
+              $scope.step2Data.selectedAttractions[city.name].push(item);
           }
                   
       }
       
       $scope.verifyEntered = function() {
           var a = true;
-          
+          if(!$scope.step2Data.selectedAttractions) {
+              return false;
+          }
           return a;
       };
       $scope.nextStep = function() {

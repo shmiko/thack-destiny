@@ -36,6 +36,8 @@ angular.module('thackApp')
         }
             
     };
+      
+       
     
   }])
 
@@ -51,4 +53,6 @@ angular.module('thackApp')
             }
         });
     };
+    
+   
 });
