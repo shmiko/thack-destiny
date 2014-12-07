@@ -10,10 +10,10 @@
                       <div class="btn-group">
                         <div class="btn btn-success col-md-12" >
                             <div class="row">
-                            <label class="col-md-12">Nearest Railway station: {{ 'N/A' }}</label>
+                            <label class="col-md-12">Nearest Railway station: {{ algo.airportNearestRail }}</label>
                                 </div>
                             <div class="row">
-                            <label class="col-md-12">Cab availability: {{ algo.airportCabPickup[0].car[0].estimated_total.amount }} USD per day</label>                 </div>
+                            <label class="col-md-12">Cab availability: {{ algo.airportCabPickup[0].cars[0].estimated_total.amount }} USD per day</label>                 </div>
                           </div>
                     </div>
                     </accordion-group>
@@ -39,7 +39,7 @@
                         <div class="btn btn-success col-md-12">
                             <label class="col-md-6">{{att.venue.name}}</label>
                             <label class="col-md-2">{{ att.cabCharge }}</label>
-                            <label class="col-md-2">{{ att.railTravel }}</label>
+                            <label class="col-md-2 wrap-fn">{{ att.railTravel }}</label>
                             <label class="col-md-2">{{att.distanceTo}}</label>
                           </div>
                     </div>

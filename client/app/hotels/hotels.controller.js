@@ -48,7 +48,10 @@ angular.module('thackApp')
                    
                   return $http.get('/api/amadeus/nearestrail/?latitude='+ algo.loc.lat + '&longitude=' + algo.loc.lng);
               }).then(function(data) {
-                  algo.airportNearestRail = data.data;
+                  if(data.data && data.data.length) {
+                      algo.airportNearestRail = data.data[0].station_label;
+                  }
+                  
                   
                   var checkin = algo.checkin.getFullYear() + '-' + ("0" + (algo.checkin.getMonth() + 1)).slice(-2) + '-' + ("0" + algo.checkin.getDate()).slice(-2);
                   
@@ -81,16 +84,23 @@ angular.module('thackApp')
               var fn = function(attr) {
                   
                   var checkin = algo.checkin.getFullYear() + '-' + ("0" + (algo.checkin.getMonth() + 1)).slice(-2) + '-' + ("0" + algo.checkin.getDate()).slice(-2);
-                  $http.get('/api/amadeus/cabsearch/?latitude='+ loc.lat + '&longitude=' + loc.lon + '&date=' + checkin).success(function(resp) {
+                  $http.get('/api/amadeus/cabsearch/?latitude='+ loc.lat + '&longitude=' + loc.lon + '&date=' + checkin).then(function(resp) {
                 
                 if(resp.data && resp.data.results.length) {
-                    attr.cabCharge = resp.data.results[0].car[0].estimated_total.amount + " USD / day";
+                    attr.cabCharge = resp.data.results[0].cars[0].estimated_total.amount + " USD / day";
                 } else {
                     attr.cabCharge = "N/A";
                 }
                 
+                      return $http.get('/api/amadeus/nearestrail/?latitude='+ attr.venue.location.lat + '&longitude=' + attr.venue.location.lng);
                 
-            });
+            }).then(function(data) {
+                      if(data.data) {
+                          attr.railTravel = data.data[0].station_label;
+                      } else {
+                          attr.railTravel = "N/A";
+                      }
+                  });
                   
               }(algo.attractions[i]);
           }
