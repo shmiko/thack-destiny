@@ -21,6 +21,8 @@ The Destiny final version is intended to the following things (proposal, impleme
 3. Form a recommended iterinary for the travelers based on the purpose of their travel
 4. Recommendation system for the places of interest in the city they are visiting
 
+
+Challenge: Wings, wheels and beyond
 Particpation: Individually under team name "Destiny"
 Prizes: Winner - Best Use Amadeus API (US$2000 as gift card)
 Shortlisted - Best by individual or team of 2 developers
