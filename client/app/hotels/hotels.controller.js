@@ -2,7 +2,7 @@ angular.module('thackApp')
   .controller('hotelsController', ['$scope', '$http', 'allDataService','$location', function ($scope, $http, allDataService, $location) {
       $scope.hotelData = {};
       $scope.hotelData.attractions = [];
-    $scope.hotelData.selectedAttractions = {};
+      $scope.hotelData.selectedAttractions = {};
       $scope.hotelData.selectedCountry = allDataService.getSelectedCountry();
       $scope.hotelData.selectedCities = allDataService.getSelectedCities();
       $scope.hotelData.addlData = allDataService.getTripInfo();
